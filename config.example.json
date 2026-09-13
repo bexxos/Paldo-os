@@ -1,0 +1,119 @@
+{
+  "_note": "Neutral placeholder configuration for paldo-outbound-agent. Every value is a placeholder: no real route, credential, market, region, business or account appears here. Copy to config.json (git-ignored) and replace the values you need. Environment variables in .env.example take precedence over the routing values below.",
+  "market": {
+    "niche": "Local service businesses",
+    "primary_region": "Northfield",
+    "secondary_region": "Secondary Region",
+    "primary_lane_countries": [],
+    "primary_lane_markers": [
+      "primary region"
+    ],
+    "hub_allowlist": [
+      "Westport",
+      "Riverton",
+      "Fairview",
+      "Harbor area"
+    ],
+    "google_query_plan": [
+      "local service business in Westport, Northfield",
+      "local business in Westport, Northfield",
+      "local service business in Riverton, Northfield",
+      "local business in Riverton, Northfield",
+      "local service business in Fairview, Northfield",
+      "local business near Harbor District, Northfield"
+    ],
+    "provider_search_terms": {
+      "primary": "local service business",
+      "secondary": "appointment based local service business"
+    },
+    "timezone": "UTC"
+  },
+  "notifications": {
+    "backend": "console",
+    "jsonl_path": "./out/notifications.jsonl",
+    "channel_id": 1001,
+    "operator_id": 1001,
+    "channels": {
+      "control": 1001,
+      "outbound_queue": 1002,
+      "replies_pipeline": 1003,
+      "growth_review": 1004,
+      "alerts": 1005
+    },
+    "delivery_channels": {
+      "business": "business",
+      "jobs": "jobs"
+    },
+    "daily_cap": 0,
+    "enabled": 0,
+    "allowed_actions": [
+      "SEND_MESSAGE",
+      "EDIT_MESSAGE"
+    ]
+  },
+  "runtime": {
+    "gmail_allowed_account": "owner@example.invalid",
+    "excluded_business_names": [],
+    "job_monitor_dir": null,
+    "recovery_run_id": "recovered-run-0000-00-00",
+    "recovery_saved_handoffs": {
+      "primary": "recovery-primary-handoff.json",
+      "secondary": "recovery-secondary-handoff.json",
+      "research": "recovery-research-combined.json",
+      "writer": "recovery-writer.json",
+      "valid_messages": "recovery-valid-messages.json"
+    },
+    "expected_provider_runs": {
+      "primary": {
+        "remote_run_id": "primary-remote-run-id",
+        "dataset_id": "primary-dataset-id",
+        "item_count": 25,
+        "cost_usd": 0.1252
+      },
+      "secondary": {
+        "remote_run_id": "secondary-remote-run-id",
+        "dataset_id": "secondary-dataset-id",
+        "item_count": 25,
+        "cost_usd": 0.1252
+      }
+    }
+  },
+  "message_policy": {
+    "policy_version": "PALDO_OS_V1_0",
+    "policy_status": "APPROVED_FOR_DRAFT_CREATION",
+    "automatic_sending": false,
+    "max_outbound_touches": 3,
+    "operator_identity": {
+      "local": "I'm a local automation specialist working with owner-led service businesses.",
+      "international": "I'm an automation specialist working with small service businesses."
+    },
+    "case_study": {
+      "url": "https://example.com/work/case-study",
+      "placeholder": "[CASE_STUDY_URL]",
+      "approved_proof": "I helped move Harborview Services' paper-based client records into a searchable digital system."
+    }
+  },
+  "safety_defaults": {
+    "system_state": "PAUSED",
+    "discovery_mode": "DRY_RUN",
+    "daily_message_cap": 0,
+    "daily_candidate_processing_cap": 20,
+    "drafting_enabled": 0,
+    "drafting_daily_cap": 0,
+    "gmail_send_enabled": 0,
+    "gmail_draft_integration_enabled": 0,
+    "gmail_draft_daily_cap": 0,
+    "followup_enabled": 0,
+    "reply_ingestion_enabled": 0,
+    "linkedin_sending_enabled": 0,
+    "linkedin_daily_cap": 0,
+    "notifications_enabled": 0,
+    "notification_daily_cap": 0,
+    "scheduler_enabled": 0,
+    "apify_daily_run_cap": 0,
+    "apify_max_items_per_run": 0,
+    "apify_max_total_charge_usd": 0,
+    "google_places_daily_request_cap": 0,
+    "website_enrichment_daily_quota": 0
+  }
+}

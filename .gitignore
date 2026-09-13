@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+
+# Local configuration overrides
+config.json
+config.local.json
+
+# Operational data: never publish collected evidence or the canonical database
+data/
+reddit_evidence/
+reports/
+out/
+*.sqlite3
+*.sqlite3-journal
+*.sqlite3-wal
+*.sqlite3-shm
+
+# Runtime artifacts
+*.log
+*.err
+*.stderr
+*.out
+*.jsonl
+.handoff_*.json
+*.lock
+.paldo-os-production.lock
+.reddit-poll.lock
+
+# Editors and OS files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
