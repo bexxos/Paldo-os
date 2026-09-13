@@ -17,6 +17,27 @@ sends a LinkedIn message, or contacts anyone.
 > regions, businesses, and case-study details are placeholders. See
 > [Sanitization](#sanitization) below.
 
+## Quickstart
+
+An auditable, fail-closed outbound pipeline: every stage refuses to do live work
+without explicit opt-in, and a cycle always stops for human review instead of
+contacting anyone.
+
+It is **not** a supported product, it is not wired to any live account or
+credential, and it sends nothing.
+
+```bash
+# Watch the whole pipeline work offline in a few seconds: discovery, dedupe,
+# enrichment, qualification, drafting, and one console notification. No
+# credentials, no network, writes only to a temporary database, exits 0.
+python3 examples/demo_pipeline.py
+
+# Run the test suite.
+python3 -m unittest discover -s tests -p 'test_*.py'
+```
+
+Requires Python 3.11 or newer, with zero third-party dependencies.
+
 ## Layout
 
 Root modules are flat and numbered by pipeline stage.
@@ -47,6 +68,9 @@ Root modules are flat and numbered by pipeline stage.
 
 `tests/` holds the `unittest` suite for every stage.
 
+`examples/` holds the offline demo (`demo_pipeline.py`) and the documented
+production handoff contract (`handoff.example.json`).
+
 ## Requirements
 
 * Python 3.11 or newer.
@@ -61,9 +85,13 @@ python3 -m unittest discover -s tests -p 'test_*.py' -v
 Current real result on this snapshot:
 
 ```
-Ran 315 tests
+Ran 324 tests
 FAILED (failures=2)
 ```
+
+`tests/test_demo_example.py` contributes 9 of those tests: it runs
+`examples/demo_pipeline.py` as a subprocess and asserts on the walkthrough it
+prints.
 
 Note: the canonical-guard tests open `DEFAULT_DB_PATH`, so running the suite
 creates an empty, git-ignored `data/paldo_os_outbound.sqlite3` (schema only,
